@@ -30,7 +30,7 @@ defined('MOODLE_INTERNAL') || die();
 $plugin->component = 'theme_so7ob';
 
 // This is the version of the plugin.
-$plugin->version = 2025080804;
+$plugin->version = 2025080805;
 
 // This is the named version.
 $plugin->release = '5.0.4';

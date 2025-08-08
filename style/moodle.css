@@ -1,3 +1,65 @@
+/*
+ * Custom So7ob theme overrides
+ *
+ * The following rules adjust the typography and button styles to provide a more
+ * modern and engaging user experience. We load a new font (Tajawal), apply
+ * it to the body, and redefine the core `.btn`, `.btn-primary` and
+ * `.btn-secondary` classes with gradients, rounded corners, transitions and
+ * shadows. These overrides appear after the default compiled CSS so that
+ * they take precedence over Bootstrap's standard rules. The gradient colours
+ * correspond to the theme's primary (#004f7c) and secondary (#f4a340)
+ * palette, with darker shades for hover effects.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
+
+body {
+  font-family: 'Tajawal', sans-serif;
+}
+
+/* Base button style */
+.btn {
+  border-radius: 0.4rem;
+  font-weight: 600;
+  padding: 0.55rem 1.3rem;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Primary button with gradient */
+.btn-primary {
+  background-image: linear-gradient(45deg, #004f7c, #00385b);
+  border: none;
+  color: #fff;
+}
+.btn-primary:hover,
+.btn-primary:focus {
+  background-image: linear-gradient(45deg, #00385b, #002f48);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Secondary button with gradient */
+.btn-secondary {
+  background-image: linear-gradient(45deg, #f4a340, #d98c29);
+  border: none;
+  color: #212529;
+}
+.btn-secondary:hover,
+.btn-secondary:focus {
+  background-image: linear-gradient(45deg, #d98c29, #b8761c);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Disabled buttons */
+.btn:disabled,
+.btn.disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
 @charset "UTF-8";
 .scale-up, .popover-region-notifications .popover-region-container {
   -webkit-transition: all 0.3s ease;

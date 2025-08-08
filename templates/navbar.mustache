@@ -55,48 +55,69 @@
         ]
     }
 }}
-<nav class="navbar fixed-top bg-body navbar-expand border-bottom px-2" aria-label="{{#str}}sitemenubar, admin{{/str}}">
-    <button class="navbar-toggler aabtn d-block d-md-none px-1 my-1 border-0" data-toggler="drawers" data-action="toggle" data-target="theme_boost-drawers-primary">
-        <span class="navbar-toggler-icon"></span>
-        <span class="sr-only">{{#str}}sidepanel, core{{/str}}</span>
-    </button>
-
-    <a href="{{{ config.homeurl }}}" class="navbar-brand d-none d-md-flex align-items-center m-0 me-4 p-0 aabtn">
-
-        {{# output.should_display_logo }}
-            <img src="{{output.get_logo}}" class="logo me-1" alt="{{sitename}}">
-        {{/ output.should_display_logo }}
-        {{^ output.should_display_logo }}
-            {{{ sitename }}}
-        {{/ output.should_display_logo }}
-    </a>
-    {{#primarymoremenu}}
-        <div class="primary-navigation">
-            {{> core/moremenu}}
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-3" aria-label="Main navigation">
+    <div class="container-fluid">
+        <div class="d-flex align-items-center">
+            <!-- Drawer toggle for mobile (maintain original side drawer behaviour) -->
+            <button class="navbar-toggler me-2 aabtn d-block d-md-none px-1 my-1 border-0"
+                data-toggler="drawers" data-action="toggle" data-target="theme_boost-drawers-primary">
+                <span class="navbar-toggler-icon"></span>
+                <span class="sr-only">{{#str}}sidepanel, core{{/str}}</span>
+            </button>
+            <!-- Brand / Logo -->
+            <a href="{{{ config.homeurl }}}" class="navbar-brand d-flex align-items-center m-0 me-3 p-0 fw-bold">
+                {{# output.should_display_logo }}
+                    <img src="{{output.get_logo}}" alt="{{sitename}}" class="me-2" height="40">
+                {{/ output.should_display_logo }}
+                {{^ output.should_display_logo }}
+                    {{{ sitename }}}
+                {{/ output.should_display_logo }}
+            </a>
         </div>
-    {{/primarymoremenu}}
-
-    <ul class="navbar-nav d-none d-md-flex my-1 px-1">
-        <!-- page_heading_menu -->
-        {{{ output.page_heading_menu }}}
-    </ul>
-
-    <div id="usernavigation" class="navbar-nav ms-auto h-100">
-        {{# output.search_box }}
-            {{{ output.search_box }}}
-            <div class="divider border-start h-75 align-self-center mx-1"></div>
-        {{/output.search_box}}
-        {{#langmenu}}
-            {{> theme_boost/language_menu }}
-            <div class="divider border-start h-75 align-self-center mx-1"></div>
-        {{/langmenu}}
-        {{{ output.navbar_plugin_output }}}
-        <div class="d-flex align-items-stretch usermenu-container" data-region="usermenu">
-            {{#usermenu}}
-                {{> core/user_menu }}
-            {{/usermenu}}
+        <!-- Navbar collapse toggle -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#so7ob-navbar"
+            aria-controls="so7ob-navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="so7ob-navbar">
+            <!-- Primary navigation menu (custom and more menu) -->
+            {{#primarymoremenu}}
+                <div class="primary-navigation me-auto">
+                    {{> core/moremenu}}
+                </div>
+            {{/primarymoremenu}}
+            {{^primarymoremenu}}
+                <div class="navbar-nav me-auto">
+                    {{{ output.page_heading_menu }}}
+                </div>
+            {{/primarymoremenu}}
+            <!-- Search box -->
+            {{# output.search_box }}
+                <div class="me-3 d-flex align-items-center">
+                    {{{ output.search_box }}}
+                </div>
+            {{/output.search_box}}
+            <!-- Language menu -->
+            {{#langmenu}}
+                <div class="d-flex align-items-center me-2">
+                    {{> theme_boost/language_menu }}
+                </div>
+            {{/langmenu}}
+            <!-- Dark mode toggle button -->
+            <button id="dark-mode-toggle" type="button" class="btn btn-outline-secondary me-2">
+                <i class="fa fa-moon"></i>
+                <span class="sr-only">Toggle dark mode</span>
+            </button>
+            <!-- Plugin output (e.g. messaging) -->
+            {{{ output.navbar_plugin_output }}}
+            <!-- User menu and edit switch -->
+            <div class="d-flex align-items-center ms-2">
+                {{#usermenu}}
+                    {{> core/user_menu }}
+                {{/usermenu}}
+                {{{ output.edit_switch }}}
+            </div>
         </div>
-        {{{ output.edit_switch }}}
     </div>
 </nav>
 
@@ -108,4 +129,5 @@
     </div>
 {{/secondarymoremenu}}
 
+<!-- Mobile primary drawer still loaded from Boost -->
 {{> theme_boost/primary-drawer-mobile }}

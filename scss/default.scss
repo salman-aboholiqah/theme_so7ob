@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+// Import our custom font (Tajawal) instead of the default Cairo font.
+// See _variables.scss and style.scss for further font definitions.
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
 @import "so7ob/transitions";
 @import "so7ob/variables";
 @import "../../boost/scss/preset/default";

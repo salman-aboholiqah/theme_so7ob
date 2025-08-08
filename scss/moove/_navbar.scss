@@ -36,12 +36,17 @@
     padding-bottom: 0;
     z-index: 1021;
     background-color: $secondary-menu-color;
-    filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.5));
-    position: fixed;
+    // Replace the heavy drop-shadow with a softer box-shadow and make the bar sticky instead of fixed.
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
     top: 70px;
 
     > .so7ob-container-fluid {
-        padding: 0;
+        // Ensure the secondary navigation spans the full width and has no side padding.
+        max-width: 100%;
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
     }
 
     &.so7ob {
@@ -50,33 +55,41 @@
     }
 
     .moremenu {
+        // Remove borders and background so the menu inherits the bar colour.
         box-shadow: none;
-        background-color: inherit;
-        border-top: none;
-        border-bottom: none;
-        height: 60px;
+        background-color: transparent;
+        border: none;
+        height: auto;
 
         .nav-tabs {
+            // Display tabs in a single row and allow horizontal scrolling on small screens.
+            display: flex;
+            justify-content: flex-start;
             border: none;
-            background-color: inherit;
+            background-color: transparent;
             max-width: none;
+            overflow-x: auto;
+            white-space: nowrap;
 
             .nav-link {
+                // Provide consistent padding and ensure alignment.
                 display: flex;
                 align-items: center;
+                padding: .5rem 1rem;
                 white-space: nowrap;
                 color: #fff;
                 border: none;
                 border-radius: 0;
 
                 &.active {
-                    border-bottom: 2px solid #fff;
+                    // Highlight the active tab with a thicker underline in a lighter shade of the bar colour.
+                    border-bottom: 3px solid lighten($secondary-menu-color, 20%);
                     font-weight: 700;
                 }
 
                 &:hover,
                 &:focus {
-                    background-color: darken($brand-primary, 10%);
+                    background-color: darken($secondary-menu-color, 5%);
                 }
             }
         }

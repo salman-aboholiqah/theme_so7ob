@@ -122,11 +122,12 @@
 </nav>
 
 {{#secondarymoremenu}}
-    <div class="secondary-navigation d-print-none so7ob">
+    <!-- Secondary navigation: wrap the moremenu inside a nav element for better semantics and styling -->
+    <nav class="secondary-navigation d-print-none so7ob">
         <div class="so7ob-container-fluid">
             {{> core/moremenu}}
         </div>
-    </div>
+    </nav>
 {{/secondarymoremenu}}
 
 <!-- Mobile primary drawer still loaded from Boost -->

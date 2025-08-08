@@ -1,0 +1,90 @@
+// theme/so7ob/scss/style.scss
+//
+// This file compiles all SCSS for the So7ob theme. It imports the
+// variable definitions and the Boost preset, then applies custom
+// styling rules. When building SCSS, Moodle uses the combination of
+// `_variables.scss` and this file via the callbacks defined in
+// `lib.php` and `config.php`.
+
+// Load the Cairo font from Google Fonts. This makes the font available in the compiled CSS.
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+
+// Import custom variables first so they override Boost defaults.
+@import "variables";
+
+// Import the Boost preset. This brings in all core Bootstrap styles.
+@import "preset/boost";
+
+// Custom utility classes and overrides
+body {
+  background-color: $body-bg;
+  font-family: $font-family-base;
+}
+
+.navbar {
+  // Do not override the navbar background here. Use Bootstrap utility classes
+  // (e.g. bg-white, bg-body) in the template to control the colour. Leaving
+  // background transparent allows the class to take effect. Colours for dark
+  // mode are defined separately below.
+  background-color: transparent;
+}
+
+.navbar .navbar-brand img {
+  height: 40px;
+}
+
+.hero {
+  background-color: $front-hero-bg;
+  background-image: none;
+}
+
+.marketing {
+  background-color: lighten($primary, 45%);
+}
+
+// Button colour override
+.btn-primary {
+  background-color: $secondary;
+  border-color: $secondary;
+  &:hover {
+    background-color: darken($secondary, 10%);
+    border-color: darken($secondary, 10%);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Dark mode overrides
+//
+// When the body element has the class 'dark-mode', apply a darker colour
+// palette across the site. This works in combination with the dark mode
+// toggle button defined in templates/navbar.mustache and the script in
+// yui/src/so7ob.js. Colours are derived from the existing palette using
+// SCSS functions for consistency.
+
+body.dark-mode {
+  background-color: darken($body-bg, 80%);
+  color: #f0f0f0;
+}
+
+body.dark-mode .navbar {
+  background-color: darken($primary, 25%);
+}
+
+body.dark-mode .hero {
+  background-color: darken($primary, 20%);
+  color: #f0f0f0;
+}
+
+body.dark-mode .marketing {
+  background-color: darken($primary, 35%);
+  color: #f0f0f0;
+}
+
+body.dark-mode .btn-primary {
+  background-color: darken($secondary, 20%);
+  border-color: darken($secondary, 20%);
+  &:hover {
+    background-color: darken($secondary, 30%);
+    border-color: darken($secondary, 30%);
+  }
+}

@@ -1,0 +1,24 @@
+// theme/so7ob/scss/_variables.scss
+//
+// Define your colour palette and typography here. These variables override
+// Bootstrap/Boost defaults and are injected into the SCSS compiler by the
+// pre_scss callback. Adjust them to match your brand. For example, the
+// primary colour is used on buttons and links, and the secondary colour
+// appears in the navbar.
+
+// Colour palette
+$primary:   #004f7c;   // primary brand colour (e.g. dark blue)
+$secondary: #f4a340;   // secondary accent colour (e.g. warm orange)
+$success:   #198754;
+$info:      #0dcaf0;
+$warning:   #ffc107;
+$danger:    #dc3545;
+
+// Background colours
+$body-bg:         #f7f7f7;   // light grey background for the body
+$front-hero-bg:   darken($primary, 5%);
+
+// Typography
+$font-family-base: 'Tajawal', sans-serif;
+$headings-font-family: 'Tajawal', sans-serif;
+$font-size-base: 1rem;
